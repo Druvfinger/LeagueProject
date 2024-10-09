@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="696bf673-2968-4005-b560-0333e6993bcb" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/AutoCompletion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/Champion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionData.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionImage.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionLore.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionPassive.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionSkin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionSpell.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/ChampionStats.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/Champion/LevelTip.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ChampPool.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/AutoCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AutoCompletion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion/Janna.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion/Janna.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion/Ahri.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion/Ahri.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

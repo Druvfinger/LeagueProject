@@ -13,10 +13,10 @@ public class AutoCompletion extends PlainDocument {
     ComboBoxModel model;
     JTextComponent editor;
     // flag to indicate if setSelectedItem has been called
-// subsequent calls to remove/insertString should be ignored
+    // subsequent calls to remove/insertString should be ignored
     boolean selecting=false;
     boolean hidePopupOnFocusLoss;
-    boolean hitBackspace=true;
+    boolean hitBackspace=false;
     boolean hitBackspaceOnSelection;
 
     KeyListener editorKeyListener;

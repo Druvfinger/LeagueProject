@@ -10,9 +10,9 @@ import java.util.List;
 
 
 public class Util {
-    private static final List<Champion> champions = mapChampionsJsonFilesToChampionClass();
-    public ImageIcon getChampPortrait(String champion){
-        return new ImageIcon("src/main/resources/dragontail-14.19.1/14.19.1/img/champion/" + champion + ".png");
+    public static final List<Champion> champions = mapChampionsJsonFilesToChampionClass();
+    public ImageIcon getChampPortrait(ChampionImage championImage){
+        return new ImageIcon("src/main/resources/dragontail-14.19.1/14.19.1/img/champion/" + championImage.full());
     }
 
     public static List<Champion> mapChampionsJsonFilesToChampionClass(){
@@ -29,16 +29,21 @@ public class Util {
         }catch (DirectoryIteratorException | IOException e){
             e.printStackTrace();
         }
-
-        System.out.println();
         return champions;
     }
     public List<String> getChampionNameList(){
         List<String> championNames = new ArrayList<>();
-        for (Champion champion : champions){
-            championNames.add(champion.name());
-        }
+        champions.forEach(champ -> championNames.add(champ.name()));
         return championNames;
+    }
+
+    public Champion getChampion(String championName){
+        for (Champion champion : champions){
+            if (championName.equals(champion.name())){
+                return champion;
+            }
+        }
+        return null;
     }
 
 }

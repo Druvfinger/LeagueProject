@@ -1,6 +1,4 @@
-import com.fasterxml.jackson.core.JsonLocation;
-import com.fasterxml.jackson.core.JsonParser;
-import com.fasterxml.jackson.databind.JsonNode;
+import Champion.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.swing.*;
@@ -8,51 +6,39 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
+
 public class Util {
-
-
-
-
+    private static final List<Champion> champions = mapChampionsJsonFilesToChampionClass();
     public ImageIcon getChampPortrait(String champion){
-        return new ImageIcon("C:/Users/Richard/IdeaProjects/LeagueProject/src/main/resources/dragontail-14.19.1/14.19.1/img/champion/" + champion + ".png");
+        return new ImageIcon("src/main/resources/dragontail-14.19.1/14.19.1/img/champion/" + champion + ".png");
     }
-    public List<String> getChampionsList(){
-        List<String> championsList = new ArrayList<>();
+
+    public static List<Champion> mapChampionsJsonFilesToChampionClass(){
+        List<Champion> champions = new ArrayList<>();
         Path directoryPath = Paths.get("src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion");
+
         try (DirectoryStream<Path> stream = Files.newDirectoryStream(directoryPath)){
             for (Path filePath : stream){
-                championsList.add(Arrays.stream(filePath.toString().split("\\\\")).toList().get(8).replace(".json",""));
+                File champFile = filePath.toFile();
+                ObjectMapper mapper = new ObjectMapper();
+                ChampionData championData = mapper.readValue(champFile, ChampionData.class);
+                champions.add(championData.data().get(championData.data().keySet().stream().toList().get(0)));
             }
         }catch (DirectoryIteratorException | IOException e){
             e.printStackTrace();
         }
-        return championsList;
+
+        System.out.println();
+        return champions;
     }
-    public Path getChampFile(String champion){
-        Path directoryPath = Paths.get("src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion");
-        try (DirectoryStream<Path> stream = Files.newDirectoryStream(directoryPath)){
-            for (Path filePath : stream){
-                if (filePath.endsWith(champion + ".json")){
-                    return filePath;
-                }
-            }
-        }catch (DirectoryIteratorException | IOException e){
-            e.printStackTrace();
+    public List<String> getChampionNameList(){
+        List<String> championNames = new ArrayList<>();
+        for (Champion champion : champions){
+            championNames.add(champion.name());
         }
-        return null;
+        return championNames;
     }
 
-    public void readChampJSON(Path path){
-
-    }
-
-    public Util(){
-        System.out.println(getChampionsList());
-    }
-    public static void main(String[] args) {
-        Util util = new Util();
-    }
 }

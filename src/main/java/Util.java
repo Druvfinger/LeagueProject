@@ -2,7 +2,9 @@ import Champion.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.swing.*;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.*;
 import java.util.ArrayList;
@@ -10,6 +12,7 @@ import java.util.List;
 
 
 public class Util {
+
     public static final List<Champion> champions = mapChampionsJsonFilesToChampionClass();
     public ImageIcon getChampPortrait(ChampionImage championImage){
         return new ImageIcon("src/main/resources/dragontail-14.19.1/14.19.1/img/champion/" + championImage.full());
@@ -45,5 +48,14 @@ public class Util {
         }
         return null;
     }
-
+    public void addToChampPool(Champion champion){
+        File file = new File("src/main/resources/ChampPool.txt");
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(champion.name());
+            writer.newLine();
+        } catch (IOException e) {
+            System.out.println("An error occurred while writing to the file.");
+            e.printStackTrace();
+        }
+    }
 }

@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="696bf673-2968-4005-b560-0333e6993bcb" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/AddToChampPoolScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/AutoCompletion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/AutoCompletion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Test.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Test.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Util.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Util.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion/Ahri.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/dragontail-14.19.1/14.19.1/data/en_GB/champion/Ahri.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +57,14 @@
       <recent name="C:\Users\Richard\IdeaProjects\LeagueProject\src\main\resources" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Test">
+  <component name="RunManager" selected="Application.AddToChampPoolScreen">
+    <configuration name="AddToChampPoolScreen" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="AddToChampPoolScreen" />
+      <module name="LeagueProject.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SearchableComboBox" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="SearchableComboBox" />
       <module name="LeagueProject.main" />
@@ -82,6 +88,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.AddToChampPoolScreen" />
         <item itemvalue="Application.SearchableComboBox" />
         <item itemvalue="Application.Util" />
         <item itemvalue="Application.Test" />

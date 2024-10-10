@@ -2,13 +2,11 @@ import Champion.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import javax.swing.*;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class Util {
@@ -48,13 +46,46 @@ public class Util {
         }
         return null;
     }
-    public void addToChampPool(Champion champion){
+    public void addToChampPool(String championName){
+        File file = new File("src/main/resources/ChampPool.txt");
+        if (!getChampPool().contains(championName)){
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file, true))) {
+                writer.write(championName);
+                writer.newLine();
+            } catch (IOException e) {
+                System.out.println("An error occurred while writing to the file.");
+                e.printStackTrace();
+            }
+        }
+    }
+    public List<String> getChampPool() {
+        File file = new File("src/main/resources/ChampPool.txt");
+        List<String> champPool = new ArrayList<>();
+        Scanner scanner;
+        try {
+            scanner = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        while (scanner.hasNext()){
+            champPool.add(scanner.nextLine());
+        }
+        return champPool;
+    }
+    public void removeFromChampPool(String champName){
+        File file = new File("src/main/resources/ChampPool.txt");
+        List<String> champPool = getChampPool();
+        clearChampPool();
+        champPool.remove(champName);
+        for (String champ : champPool){ addToChampPool(champ); }
+    }
+    public void clearChampPool() {
         File file = new File("src/main/resources/ChampPool.txt");
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
-            writer.write(champion.name());
-            writer.newLine();
+            // Write nothing to the file, which will clear its content
+            writer.write("");
         } catch (IOException e) {
-            System.out.println("An error occurred while writing to the file.");
+            System.out.println("An error occurred while clearing the file.");
             e.printStackTrace();
         }
     }

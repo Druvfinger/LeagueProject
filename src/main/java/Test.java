@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
 import java.util.List;
 import java.util.Objects;
 
@@ -11,26 +12,30 @@ public class Test extends JFrame implements ActionListener {
 
     JPanel basePanel = new JPanel(new GridLayout(1,0));
     Util util = new Util();
-    JTextField searchField = new JTextField();
     JComboBox<Object> dropdownList = new JComboBox<>();
     List<String> championNames = util.getChampionNameList();
-    JLabel westImgLabel = new JLabel();
-    ImageIcon westImgIcon;
-    JPanel dropDownPanel = new JPanel(new BorderLayout());
-    JPanel panelCenter = new JPanel(new BorderLayout());
-    JLabel champNameLabelWest;
+    JPanel dropDownPanel = new JPanel();
+    JPanel userChampPoolPanel = new JPanel();
+    JLabel userChampPoolHeader = new JLabel("Your Champ Pool");
+    JButton addToChampPoolButton = new JButton("Add Chosen Champ to Pool");
 
-    public Test(){
-        add(basePanel);
+    public Test() throws FileNotFoundException {
 
+        basePanel.setLayout(new BoxLayout(basePanel, BoxLayout.Y_AXIS));
+
+        userChampPoolPanel.setLayout(new BoxLayout(userChampPoolPanel, BoxLayout.Y_AXIS));
+        basePanel.add(userChampPoolPanel, BorderLayout.NORTH);
+        displayChampPool(util.getChampPool());
         championNames.forEach(championName -> dropdownList.addItem(championName));
-        searchField.setToolTipText("Search for Champion");
         AutoCompletion.enable(dropdownList);
 
-
+        dropdownList.setPreferredSize(new Dimension(400, 50));
+        dropDownPanel.setLayout(new BoxLayout(dropDownPanel, BoxLayout.Y_AXIS));
         dropDownPanel.add(dropdownList);
-        dropdownList.addActionListener(this);
-
+        dropDownPanel.add(addToChampPoolButton);
+        addToChampPoolButton.addActionListener(this);
+        basePanel.add(dropDownPanel, BorderLayout.SOUTH);
+        add(basePanel);
 
 
         setSize(410, 600);
@@ -38,24 +43,33 @@ public class Test extends JFrame implements ActionListener {
         setLocationRelativeTo(null);
         setVisible(true);
     }
-
+    public void displayChampPool(List<String> champPool){
+        userChampPoolPanel.removeAll();
+        userChampPoolPanel.add(userChampPoolHeader);
+        for (String champ : champPool){
+            JPanel panel = new JPanel();
+            JButton removeButton = new JButton("remove");
+            removeButton.addActionListener(e -> {util.removeFromChampPool(champ); displayChampPool(util.getChampPool());});
+            panel.add(new JLabel(champ));
+            panel.add(removeButton);
+            userChampPoolPanel.add(panel);
+        }
+        repaint();
+        revalidate();
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
        String champName = (String) Objects.requireNonNull(dropdownList.getSelectedItem());
        Champion champion = util.getChampion(champName);
-       System.out.println(champion);
-       panelCenter.removeAll();
-       JPanel panel = new JPanel();
-       panel.add(new JLabel(new ImageIcon(util.getChampPortrait(champion.image()).getImage())));
-       panel.add(new JLabel(champion.name()));
-       panelCenter.add(panel);
+       util.addToChampPool(champion.name());
+       displayChampPool(util.getChampPool());
        revalidate();
        repaint();
     }
 
-    public static void main(String[] args) {
-        Test test = new Test();
+    public static void main(String[] args) throws FileNotFoundException {
+        new Test();
     }
 
 }
